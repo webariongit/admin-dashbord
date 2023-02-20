@@ -1,0 +1,47 @@
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav" *ngIf="sidemenu == 'admin' ">
+       <li class="nav-item"> <a class="nav-link " routerLink="/dashboard"> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
+       <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-menu-button-wide"></i><span>Master Input</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+             <li> <a routerLink="/dashboard"> <i class="bi bi-circle"></i><span>Employee Organisation Unit</span> </a></li>
+             <li> <a routerLink="/dashboard"> <i class="bi bi-circle"></i><span>Shift</span> </a></li>
+             <li> <a routerLink="/dashboard"> <i class="bi bi-circle"></i><span>Leave</span> </a></li>
+             
+             
+          </ul>
+       </li>
+       <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-journal-text"></i><span>Approval</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+             <li> <a routerLink="/dashboard"> <i class="bi bi-circle"></i><span>Tour / Site Duty</span> </a></li>
+             <li> <a routerLink="/dashboard"> <i class="bi bi-circle"></i><span>Manual Attendance</span> </a></li>
+             <li> <a routerLink="/dashboard"> <i class="bi bi-circle"></i><span>Shift Allocation</span> </a></li>
+             <li> <a routerLink="/dashboard"> <i class="bi bi-circle"></i><span>Gate Pass</span> </a></li>
+          </ul>
+       </li>
+       
+       <li class="nav-item"> <a class="nav-link collapsed" routerLink="/user-profile"> <i class="bi bi-person"></i> <span>Schedular</span> </a></li>
+       <li class="nav-item"> <a class="nav-link collapsed" routerLink="/pages-faq"> <i class="bi bi-question-circle"></i> <span>JOB</span> </a></li>
+       <li class="nav-item"> <a class="nav-link collapsed" routerLink="/pages-contact"> <i class="bi bi-envelope"></i> <span>Settings</span> </a></li>
+
+       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav-report" data-bs-toggle="collapse" href="#"> <i class="bi bi-journal-text"></i><span>Report</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+        <ul id="forms-nav-report" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+           <li> <a routerLink="/dashboard"> <i class="bi bi-circle"></i><span>Monthly Performance</span> </a></li>
+           <li> <a routerLink="/dashboard"> <i class="bi bi-circle"></i><span>Leave Form</span> </a></li>
+           
+        </ul>
+     </li>
+       
+    </ul>
+
+    <ul class="sidebar-nav" id="sidebar-nav" *ngIf="sidemenu == 'emp' ">
+      <li class="nav-item"> <a class="nav-link " routerLink="/dashboard"> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
+      <li class="nav-item">
+         <a class="nav-link " routerLink="/dashboard"> <i class="bi bi-grid"></i> <span>Others</span> </a>
+      </li>
+      
+      
+   </ul>
+ </aside>
