@@ -32,6 +32,8 @@ import { PagesFaqComponent } from './pages/pages-faq/pages-faq.component';
 import { PagesLoginComponent } from './pages/pages-login/pages-login.component';
 import { PagesRegisterComponent } from './pages/pages-register/pages-register.component';
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
+import { AuthGuardService } from './service/auth/auth-guard.service';
+
 
 const routes: Routes = [
   //{ path: '', component: DashboardComponent },
@@ -40,8 +42,8 @@ const routes: Routes = [
     redirectTo: '/pages-login',
     pathMatch: 'full'
   },
-  { path: 'pages-login', component: PagesLoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'pages-login', component: PagesLoginComponent,canActivate:[AuthGuardService]  },
+  { path: 'dashboard', component: DashboardComponent,},
   { path: 'alerts', component: AlertsComponent },
   { path: 'accordion', component: AccordionComponent },
   { path: 'badges', component: BadgesComponent },

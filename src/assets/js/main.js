@@ -1028,7 +1028,7 @@ var verticalBarChart = echarts.init(document.querySelector("#verticalBarChart"))
       ],
       datasets: [{
         label: 'My First Dataset',
-        data: [300, 50, 100],
+        // data: [300, 50, 100],
         backgroundColor: [
           'rgb(25 135 84)',
           'rgb(255, 99, 132)',

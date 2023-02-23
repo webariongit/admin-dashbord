@@ -62,19 +62,22 @@
                 <section class="section">
                   <div class="row">
                      <div class="col-lg-6">
-                        <div class="card" style="height: 330px;">
+                        <div class="card" style="height: 370px;">
                            <div class="card-body">
-                              <h5 class="card-title">Pie Chart</h5>
-                              <canvas id="pieChart" style="max-height: 250px;"></canvas>
+                              <h5 class="card-title pb-0">Pie Chart</h5>
+                              <!-- <canvas id="pieChart"   ></canvas> -->
+                              <!-- canvas for chart render -->
+                              <canvas id="piechart" style="margin: auto;max-width:300px ;margin: auto;height: 240px !important;"></canvas>
                              
                            </div>
                         </div>
                      </div>
                      <div class="col-lg-6">
-                        <div class="card" style="height: 330px;">
+                        <div class="card" style="height: 370px;">
                            <div class="card-body">
                               <h5 class="card-title">Line Chart</h5>
-                              <canvas id="lineChart" style="max-height: 450px;"></canvas>
+                              <!-- canvas chart render -->
+                               <canvas id="lineChart" style="max-height: 300px;max-width:300px ;margin: auto;height: 240px !important;"></canvas>
                               
                            </div>
                         </div>
@@ -83,7 +86,7 @@
                         <div class="card">
                            <div class="card-body">
                               <h5 class="card-title">Bar CHart</h5>
-                              <canvas id="barChart" style="max-height: 400px;"></canvas>
+                              <!-- <canvas id="barChart" style="max-height: 400px;"></canvas> -->
                               
                            </div>
                         </div>
@@ -121,16 +124,29 @@
                                </tr>
                             </thead>
                             <tbody>
-                               <tr *ngFor="let item of dashboard_data.attendanceDetail">
+                              
+                               <!-- <tr *ngFor="let item of dashboard_data.attendanceDetail | paginate: { itemsPerPage: 10, currentPage: p }">
                                   <th scope="row"><a href="#">{{item.refID}}</a></th>
                                   <td>{{item.name}}</td>
                                   <td><a href="#" class="text-primary">{{item.inTime}}</a></td>
                                   <td><a href="#" class="text-primary">{{item.outTime}}</a></td>
                                   <td><span class="badge {{item.status}}">{{item.status}}</span></td>
                                </tr>
-                               
+                               <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+                               <tr *ngFor="let item of attendance_list | paginate: { itemsPerPage: 5, currentPage: page }">
+                                 <th scope="row"><a href="#">{{item.id}}</a></th>
+                                 <td>{{item.name}}</td>
+                                 <td><a href="#" class="text-primary">{{item.intime}}</a></td>
+                                 <td><a href="#" class="text-primary">{{item.outtime}}</a></td>
+                                 <td><span class="badge {{item.status}}">{{item.status}}</span></td>
+                              </tr>
+                              
+                              
                             </tbody>
                          </table>
+                         <div class="col-sm-7  col-md-7 col-lg-7 col-xl-7 col-10 col-xxl-6  m-auto ">
+                           <pagination-controls (pageChange)="page = $event" class="tablePagination"></pagination-controls>
+                        </div>
                       </div>
                    </div>
                 </div>
@@ -244,7 +260,7 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr *ngFor="let leaveBal of dashboard_data.userLeaveBalance">
+                              <tr *ngFor="let leaveBal of dashboard_data.userLeaveBalance | paginate: { itemsPerPage: 3, currentPage:  empPage,id: 'first' }">
                                  
                                  <td>{{leaveBal.leaveType}}</td>
                                  <td><a href="#" class="text-primary">{{leaveBal.balance}}</a></td>
@@ -265,6 +281,9 @@
                               
                            </tbody>
                         </table>
+                        <div class=" col-sm-6 col-md-9 col-lg-9 col-xl-9  col-10 col-xxl-9 m-auto" >
+                           <pagination-controls (pageChange)=" empPage = $event" class="tablePagination" id="first"></pagination-controls>
+                        </div>
                      </div>
                   </div>
                </div>
@@ -285,7 +304,7 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr *ngFor="let attendance of dashboard_data.attendanceDetail">
+                              <tr *ngFor="let attendance of dashboard_data.attendanceDetail | paginate: { itemsPerPage: 5, currentPage:  empPage2 ,id: 'second'}">
                                  <td>{{attendance.punchDate}}</td>
                                  <td>{{attendance.inTime}}</td>
                                  <td><a href="#" class="text-primary">{{attendance.outTime}}</a></td>
@@ -306,6 +325,9 @@
                               
                            </tbody>
                         </table>
+                        <div class="col-sm-7  col-md-12 col-lg-12 col-xl-12 col-12 col-xxl-12  m-auto">
+                           <pagination-controls class="tablePagination" (pageChange)="empPage2= $event"  id="second"></pagination-controls>
+                        </div>
                      </div>
                   </div>
                </div>
