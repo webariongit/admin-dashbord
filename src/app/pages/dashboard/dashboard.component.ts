@@ -26,44 +26,35 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     
     this.user_role = localStorage.getItem('role');
-    if(this.user_role==null)
-    {
-      this.router.navigate(['/pages-login']);
-    }
-    else {
-        
-        let userApi = (this.user_role == 'admin') ? api_route.attendenceAS : api_route.attendenceM456;
 
-              this.apiCallMethod.get(userApi).then((res: any)=>{
-                console.log('res of admin',res)
-                this.dashboard_data = res.data;
-                this.renderChart([
-                  'Present',
-                  'Leave',
-                  'Late'
-                ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'pie','piechart');
-                this.renderChart([
-                  'Present',
-                  'Leave',
-                  'Late'
-                ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'line','lineChart');
-              }).catch((error)=>{
-                console.log(error)
-              })
-        
-        
-    } 
+      if(this.user_role==null)
+      {
+        this.router.navigate(['/pages-login']);
+      }
+      else {
+          
+          let userApi = (this.user_role == 'admin') ? api_route.attendenceAS : api_route.attendenceM456;
 
+                this.apiCallMethod.get(userApi).then((res: any)=>{
+                  console.log('res of admin',res)
+                  this.dashboard_data = res.data;
+                  this.renderChart([
+                    'Present',
+                    'Leave',
+                    'Late'
+                  ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'pie','piechart');
+                  this.renderChart([
+                    'Present',
+                    'Leave',
+                    'Late'
+                  ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'line','lineChart');
+                }).catch((error)=>{
+                  console.log(error)
+                })
+          
+          
+      } 
 
-    // var s = document.createElement("script");
-    // s.type = "text/javascript";
-    // s.src = "../assets/js/main.js";
-    // this.elementRef.nativeElement.appendChild(s);
-
-    // this.dashboard_data = {
-    //   "total_employee": "145",
-    //   "holidays": "5"
-    // }; 
     
     this.attendance_list = [
       {
@@ -234,14 +225,19 @@ export class DashboardComponent implements OnInit {
 
   // function for chart display
 
-  renderChart(labelData:any,mainData:any,colorData:any,typeOfChart:any,idOfChart:any){
+  renderChart(labelData:any,
+              mainData:any,
+              colorData:any,
+              typeOfChart:any,
+              idOfChart:any)
+  {
     
     new Chart(idOfChart, {
         type:typeOfChart,
         data: {
               labels: labelData,
               datasets: [{
-                label: 'My First Dataset',
+                label: 'Today Attendance',
                 data: mainData,
                 backgroundColor: [
                   'rgb(25 135 84)',

@@ -9,14 +9,8 @@
 .L  {
     background-color: yellow;
 }
-.paginatationStyle{
-    margin: auto;
-    width: 45%;
-}
-.paginatationStyle2{
-    margin: auto;
-    width: 65%;
-}
+
 .tablePagination ::ng-deep .ngx-pagination .current {
     background-color: #4154f1 !important;
   }
+ 
