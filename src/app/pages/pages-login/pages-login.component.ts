@@ -21,7 +21,7 @@ export class PagesLoginComponent implements OnInit {
 
   login(form:NgForm)
   {
-    console.log(form.value);
+   
 
     let username = form.value.username;
     let password = form.value.password;

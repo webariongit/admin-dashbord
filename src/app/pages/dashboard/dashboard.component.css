@@ -9,3 +9,8 @@
 .L  {
     background-color: yellow;
 }
+
+.tablePagination ::ng-deep .ngx-pagination .current {
+    background-color: #4154f1 !important;
+  }
+ 

@@ -13,6 +13,7 @@ import { PagesLoginComponent } from './pages/pages-login/pages-login.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     AppRoutingModule,FormsModule, HttpClientModule
   ],
   providers: [],
