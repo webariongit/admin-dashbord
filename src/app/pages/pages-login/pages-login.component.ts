@@ -21,25 +21,27 @@ export class PagesLoginComponent implements OnInit {
 
   login(form:NgForm)
   {
-    console.log(form.value);
+   
 
     let username = form.value.username;
     let password = form.value.password;
+    
+    // login api implement
+    
+    this.apiCallMethod.get(api_route.user_login+`/${username}/${password}`)
+        .then((resp:any)=>{
 
-    if(username == 'admin')
-    {
-      localStorage.setItem('role','admin');
-      localStorage.setItem('username','Admin');
-      this.router.navigate(['/dashboard']);
+              localStorage.setItem('role',(resp.data=='A')?'admin':'emp');
+              localStorage.setItem('username', username);
+              this.router.navigate(['/dashboard']);
+           
+        }).catch((Error:any)=>{
 
-    }
-    else
-    {
-      
-      localStorage.setItem('role','emp');
-      localStorage.setItem('username','Employee');
-      this.router.navigate(['/dashboard']);
-    }
+            console.log('error',Error)
+            
+        })
+
+
     
   }
 
