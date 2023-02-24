@@ -10,7 +10,8 @@ import { api_route } from 'src/app/service/api-route';
 })
 export class PagesLoginComponent implements OnInit {
 
-  
+  InValidUser:boolean=false;
+  userType:string='';
   constructor(private router: Router,public apiCallMethod:ApiDataService) { 
 
     
@@ -18,6 +19,7 @@ export class PagesLoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   login(form:NgForm)
   {
@@ -30,11 +32,16 @@ export class PagesLoginComponent implements OnInit {
     
     this.apiCallMethod.get(api_route.user_login+`/${username}/${password}`)
         .then((resp:any)=>{
-
+         
+              if(resp.stat==true) {
               localStorage.setItem('role',(resp.data=='A')?'admin':'emp');
               localStorage.setItem('username', username);
               this.router.navigate(['/dashboard']);
-           
+              }
+              else{
+                this.userType=resp.errorMsg
+                this.InValidUser=true;
+              }
         }).catch((Error:any)=>{
 
             console.log('error',Error)
