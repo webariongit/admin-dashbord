@@ -8,6 +8,7 @@
           </ol>
        </nav>
     </div>
+   
     <section class="section dashboard" *ngIf="user_role=='admin'">
        <div class="row">
           <div class="col-lg-12">
@@ -138,7 +139,7 @@
                                  <td>{{item.name}}</td>
                                  <td><a href="#" class="text-primary">{{item.intime}}</a></td>
                                  <td><a href="#" class="text-primary">{{item.outtime}}</a></td>
-                                 <td><span class="badge {{item.status}}">{{item.status}}</span></td>
+                                 <td><span class="badge {{item.status_color}}">{{item.status}}</span></td>
                               </tr>
                               
                               
