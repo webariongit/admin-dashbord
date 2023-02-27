@@ -34,7 +34,7 @@
                       <div class="card-body">
                          <h5 class="card-title">Late</h5>
                          <div class="d-flex align-items-center">
-                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-app-indicator"></i></div>
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"><i class="fab fa-clock"></i></div>
                             <div class="ps-3">
                                <h6>{{dashboard_data.countView.totalLate}}</h6>
                                
@@ -118,34 +118,41 @@
                               <thead style="background-color:   #4154f1;">
                                  <tr style="color: white;">
                                   <th scope="col">#</th>
-                                  <th scope="col">User</th>
+                                  <th scope="col">Employee</th>
                                   <th scope="col">In-Time</th>
                                   <th scope="col">Out-Time</th>
                                   <th scope="col">Status</th>
                                </tr>
                             </thead>
-                            <tbody>
-                              
-                               <!-- <tr *ngFor="let item of dashboard_data.attendanceDetail | paginate: { itemsPerPage: 10, currentPage: p }">
-                                  <th scope="row"><a href="#">{{item.refID}}</a></th>
-                                  <td>{{item.name}}</td>
-                                  <td><a href="#" class="text-primary">{{item.inTime}}</a></td>
-                                  <td><a href="#" class="text-primary">{{item.outTime}}</a></td>
-                                  <td><span class="badge {{item.status}}">{{item.status}}</span></td>
-                               </tr>
+                            <tbody *ngIf="dashboard_data.attendanceDetail.length==0" class="w-100">
+                              <tr>
+                                 <td class="bg-color-table"></td>
+                                 <td class="bg-color-table"></td>
+                                 <td scope="row" class="checkData bg-color-table"><a>No Data</a></td>
+                              </tr>
+                            </tbody>
+                            <tbody *ngIf="dashboard_data.attendanceDetail.length > 0">
+                              <tr *ngFor="let item of dashboard_data.attendanceDetail | paginate: { itemsPerPage: 5, currentPage: page }">
+                                 <th scope="row"><a href="#">{{item.refID}}</a></th>
+                                 <td>{{item.name}}</td>
+                                 attendanceDetail
+                                 <td><a href="#" class="text-primary">{{item.outTime}}</a></td>
+                                 <td><span class="badge {{item.status}}">{{item.status}}</span></td>
+                              </tr>
+                               <!-- 
                                <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
-                               <tr *ngFor="let item of attendance_list | paginate: { itemsPerPage: 5, currentPage: page }">
+                               <!-- <tr *ngFor="let item of attendance_list | paginate: { itemsPerPage: 5, currentPage: page }">
                                  <th scope="row"><a href="#">{{item.id}}</a></th>
                                  <td>{{item.name}}</td>
                                  <td><a href="#" class="text-primary">{{item.intime}}</a></td>
                                  <td><a href="#" class="text-primary">{{item.outtime}}</a></td>
                                  <td><span class="badge {{item.status_color}}">{{item.status}}</span></td>
-                              </tr>
+                              </tr> -->
                               
                               
                             </tbody>
                          </table>
-                         <div class="col-sm-7  col-md-7 col-lg-7 col-xl-7 col-10 col-xxl-6  m-auto ">
+                         <div class="col-sm-7  col-md-7 col-lg-7 col-xl-7 col-10 col-xxl-6  " *ngIf="dashboard_data.attendanceDetail.length > 0" >
                            <pagination-controls (pageChange)="page = $event" class="tablePagination"></pagination-controls>
                         </div>
                       </div>
@@ -248,8 +255,8 @@
                <div class="col-xxl-6 col-md-6">
                   <div class="card recent-sales overflow-auto">
                      
-                     <div class="card-body">
-                        <h5 class="card-title">Leave Type</h5>
+                     <div class="card-body cardBodyFix">
+                        <h5 class="card-title">Leave Balance</h5>
                         <!-- <table class="table table-borderless datatable"> -->
                            <table class="table table-striped">
                            <thead style="background-color:   #4154f1;">
@@ -260,7 +267,14 @@
                                  
                               </tr>
                            </thead>
-                           <tbody>
+                           <tbody *ngIf="dashboard_data.userLeaveBalance.length==0" class="w-100">
+                              <tr>
+                                
+                                 
+                                 <td scope="row" class="checkData bg-color-table check-left"><a>No Data</a></td>
+                              </tr>
+                            </tbody>
+                           <tbody *ngIf="dashboard_data.userLeaveBalance.length > 0">
                               <tr *ngFor="let leaveBal of dashboard_data.userLeaveBalance | paginate: { itemsPerPage: 3, currentPage:  empPage,id: 'first' }">
                                  
                                  <td>{{leaveBal.leaveType}}</td>
@@ -282,7 +296,7 @@
                               
                            </tbody>
                         </table>
-                        <div class=" col-sm-6 col-md-9 col-lg-9 col-xl-9  col-10 col-xxl-9 m-auto" >
+                        <div class=" col-sm-6 col-md-9 col-lg-9 col-xl-9  col-10 col-xxl-9 " *ngIf="dashboard_data.userLeaveBalance.length > 0">
                            <pagination-controls (pageChange)=" empPage = $event" class="tablePagination" id="first"></pagination-controls>
                         </div>
                      </div>
@@ -292,7 +306,7 @@
                <div class="col-xxl-6 col-md-6">
                   <div class="card recent-sales overflow-auto">
                      
-                     <div class="card-body">
+                     <div class="card-body cardBodyFix">
                         <h5 class="card-title">Attendance</h5>
                         <!-- <table class="table table-borderless datatable"> -->
                         <table class="table table-striped">
@@ -304,29 +318,23 @@
                                  
                               </tr>
                            </thead>
-                           <tbody>
+                           <tbody *ngIf="dashboard_data.attendanceDetail.length==0" class="w-100">
+                              <tr>
+                                 <td scope="row" class="checkData bg-color-table check-left"><a>No Data</a></td>
+                              </tr>
+                            </tbody>
+                           <tbody *ngIf="dashboard_data.attendanceDetail.length >0">
                               <tr *ngFor="let attendance of dashboard_data.attendanceDetail | paginate: { itemsPerPage: 5, currentPage:  empPage2 ,id: 'second'}">
                                  <td>{{attendance.punchDate}}</td>
                                  <td>{{attendance.inTime}}</td>
                                  <td><a href="#" class="text-primary">{{attendance.outTime}}</a></td>
                                 
                               </tr>
-                              <!-- <tr>
-                                 <td>02/08/2022</td>
-                                 <td>9.30</td>
-                                 <td><a href="#" class="text-primary">18.00</a></td>
-                                
-                              </tr>
-                              <tr>
-                                 <td>03/08/2022</td>
-                                 <td>9.30</td>
-                                 <td><a href="#" class="text-primary">18.00</a></td>
-                                 
-                              </tr> -->
+                              
                               
                            </tbody>
                         </table>
-                        <div class="col-sm-7  col-md-12 col-lg-12 col-xl-12 col-12 col-xxl-12  m-auto">
+                        <div class="col-sm-7  col-md-12 col-lg-12 col-xl-12 col-12 col-xxl-12 " *ngIf="dashboard_data.attendanceDetail.length >0">
                            <pagination-controls class="tablePagination" (pageChange)="empPage2= $event"  id="second"></pagination-controls>
                         </div>
                      </div>

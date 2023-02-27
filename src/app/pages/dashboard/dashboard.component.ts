@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
                     'Present',
                     'Leave',
                     'Late'
-                  ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'line','lineChart');
+                  ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'bar','lineChart');
                 }).catch((error)=>{
                   console.log(error)
                 })
@@ -252,8 +252,16 @@ export class DashboardComponent implements OnInit {
         options: {
             scales: {
               y: {
-                beginAtZero: true
-              }
+                beginAtZero: true,
+                grid: {
+                  display: false
+                }
+              },
+              x: {
+                grid: {
+                  display: false
+                }
+              },
             }
           }
     });
