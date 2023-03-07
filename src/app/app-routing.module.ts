@@ -43,7 +43,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'pages-login', component: PagesLoginComponent,canActivate:[AuthGuardService]  },
-  { path: 'dashboard', component: DashboardComponent,},
+  { path: 'dashboard/:userType', component: DashboardComponent,},
   { path: 'alerts', component: AlertsComponent },
   { path: 'accordion', component: AccordionComponent },
   { path: 'badges', component: BadgesComponent },

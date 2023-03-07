@@ -19,24 +19,24 @@ export class PagesLoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 
   login(form:NgForm)
   {
    
 
-    let username = form.value.username;
-    let password = form.value.password;
-    
+    let username = window.btoa(form.value.username);
+    let password = window.btoa(form.value.password);
+    console.log(password,username)
     // login api implement
     
     this.apiCallMethod.get(api_route.user_login+`/${username}/${password}`)
         .then((resp:any)=>{
-         
               if(resp.stat==true) {
               localStorage.setItem('role',(resp.data=='A')?'admin':'emp');
               localStorage.setItem('username', username);
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/dashboard',resp.data]);
               }
               else{
                 this.userType=resp.errorMsg

@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
+    this.username=window.atob(this.username)
   }
   sidebarToggle()
   {
