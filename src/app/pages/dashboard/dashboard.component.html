@@ -364,7 +364,7 @@
                         <div class="d-flex align-items-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center "> <i class="  bi bi-people"></i></div>
                            <div class="ps-3">
-                              <h6>{{dashboard_data.countView.totalEmployee}}</h6>
+                              <h6>{{dashboard_data?.countView?.totalEmployee}}</h6>
                               
                            </div>
                         </div>
@@ -379,7 +379,7 @@
                         <div class="d-flex align-items-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"><i class="fa-solid fa-clock"></i></div>
                            <div class="ps-3">
-                              <h6>{{dashboard_data.countView.totalLate}}</h6>
+                              <h6>{{dashboard_data?.countView?.totalLate}}</h6>
                               
                            </div>
                         </div>
@@ -394,7 +394,7 @@
                         <div class="d-flex align-items-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="fas fa-umbrella-beach"></i></div>
                            <div class="ps-3">
-                              <h6>{{dashboard_data.countView.totalLeave}}</h6>
+                              <h6>{{dashboard_data?.countView?.totalLeave}}</h6>
                               
                            </div>
                         </div>
@@ -467,14 +467,14 @@
                                  <th scope="col">Status</th>
                               </tr>
                            </thead>
-                           <tbody *ngIf="dashboard_data.attendanceDetail.length==0" class="w-100">
+                           <tbody *ngIf="dashboard_data?.attendanceDetail.length==0" class="w-100">
                              <tr>
                                 <td class="bg-color-table"></td>
                                 <td class="bg-color-table"></td>
                                 <td scope="row" class="checkData bg-color-table"><a>No Data</a></td>
                              </tr>
                            </tbody>
-                           <tbody *ngIf="dashboard_data.attendanceDetail.length > 0">
+                           <tbody *ngIf="dashboard_data?.attendanceDetail.length > 0">
                              <tr *ngFor="let item of dashboard_data.attendanceDetail | paginate: { itemsPerPage: 5, currentPage: page }">
                                 <th scope="row"><a href="#">{{item.refID}}</a></th>
                                 <td>{{item.name}}</td>
@@ -495,7 +495,7 @@
                              
                            </tbody>
                         </table>
-                        <div class="col-sm-7  col-md-7 col-lg-7 col-xl-7 col-10 col-xxl-6  " *ngIf="dashboard_data.attendanceDetail.length > 0" >
+                        <div class="col-sm-7  col-md-7 col-lg-7 col-xl-7 col-10 col-xxl-6  " *ngIf="dashboard_data?.attendanceDetail.length > 0" >
                           <pagination-controls (pageChange)="page = $event" class="tablePagination"></pagination-controls>
                        </div>
                      </div>
@@ -520,7 +520,7 @@
                        <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-person-check-fill"></i></div>
                           <div class="ps-3">
-                             <h6>{{dashboard_data.countView.totalPresent}}</h6>
+                             <h6>{{dashboard_data?.countView?.totalPresent}}</h6>
                              
                           </div>
                        </div>
@@ -535,7 +535,7 @@
                        <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-person-dash-fill"></i></div>
                           <div class="ps-3">
-                             <h6>{{dashboard_data.countView.totalAbsent}}</h6>
+                             <h6>{{dashboard_data?.countView?.totalAbsent}}</h6>
                             
                           </div>
                        </div>
@@ -550,7 +550,7 @@
                        <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="fas fa-umbrella-beach"></i></div>
                           <div class="ps-3">
-                             <h6>{{dashboard_data.countView.totalLeave}}</h6>
+                             <h6>{{dashboard_data?.countView?.totalLeave}}</h6>
                              
                           </div>
                        </div>
@@ -565,7 +565,7 @@
                        <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-calendar-check"></i></div>
                           <div class="ps-3">
-                             <h6>{{dashboard_data.countView.totalLate}}</h6>
+                             <h6>{{dashboard_data?.countView?.totalLate}}</h6>
                             
                           </div>
                        </div>
@@ -610,13 +610,13 @@
                                 
                              </tr>
                           </thead>
-                          <tbody *ngIf="((dashboard_data.userLeaveBalance==null))" class="w-100">
+                          <tbody *ngIf="((dashboard_data?.userLeaveBalance==null))" class="w-100">
                              <tr>
                                 <td scope="row" class="checkData bg-color-table check-left"><a>No Data</a></td>
                              </tr>
                            </tbody>
-                          <tbody *ngIf="(dashboard_data.userLeaveBalance!=null)" >
-                             <tr *ngFor="let leaveBal of dashboard_data.userLeaveBalance | paginate: { itemsPerPage: 3, currentPage:  empPage,id: 'first' }">
+                          <tbody *ngIf="(dashboard_data?.userLeaveBalance!=null)" >
+                             <tr *ngFor="let leaveBal of dashboard_data?.userLeaveBalance | paginate: { itemsPerPage: 3, currentPage:  empPage,id: 'first' }">
                                 
                                 <td>{{leaveBal.leaveType}}</td>
                                 <td><a href="#" class="text-primary">{{leaveBal.balance}}</a></td>
@@ -637,7 +637,7 @@
                              
                           </tbody>
                        </table>
-                       <div class=" col-sm-6 col-md-9 col-lg-9 col-xl-9  col-10 col-xxl-9 " *ngIf="((dashboard_data.userLeaveBalance!=null))">
+                       <div class=" col-sm-6 col-md-9 col-lg-9 col-xl-9  col-10 col-xxl-9 " *ngIf="((dashboard_data?.userLeaveBalance!=null))">
                           <pagination-controls (pageChange)=" empPage = $event" class="tablePagination" id="first"></pagination-controls>
                        </div>
                     </div>
@@ -659,12 +659,12 @@
                                 
                              </tr>
                           </thead>
-                          <tbody *ngIf="(dashboard_data.attendanceDetail.length==0)" class="w-100">
+                          <tbody *ngIf="(dashboard_data?.attendanceDetail?.length==0)" class="w-100">
                              <tr>
                                 <td scope="row" class="checkData bg-color-table check-left"><a>No Data</a></td>
                              </tr>
                            </tbody>
-                          <tbody *ngIf="dashboard_data.attendanceDetail.length >0">
+                          <tbody *ngIf="dashboard_data?.attendanceDetail?.length >0">
                              <tr *ngFor="let attendance of dashboard_data.attendanceDetail | paginate: { itemsPerPage: 5, currentPage:  empPage2 ,id: 'second'}">
                                 <td>{{attendance.punchDate}}</td>
                                 <td>{{attendance.inTime}}</td>
