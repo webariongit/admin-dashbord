@@ -26,9 +26,11 @@ export class PagesLoginComponent implements OnInit {
   {
    
 
+
     let username = window.btoa(form.value.username);
     let password = window.btoa(form.value.password);
     console.log(password,username)
+
     // login api implement
     
     this.apiCallMethod.get(api_route.user_login+`/${username}/${password}`)
