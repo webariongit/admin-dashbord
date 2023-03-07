@@ -21,7 +21,7 @@
     padding: 0px 10px;
     color: black;
     font-size: 19px;
-   text-align: center;
+    text-align: center;
 }
 .bg-color-table{
     --bs-table-accent-bg:white !important;
@@ -32,4 +32,7 @@
 }
 .cardBodyFix{
     height: 355px;
+}
+.colorOFIcon{
+    color: #4154f1;
 }
