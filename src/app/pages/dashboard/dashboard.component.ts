@@ -315,13 +315,15 @@ export class DashboardComponent implements OnInit {
                       'Present',
                       'Leave',
                       'Late'
-                    ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'pie','piechart');
+                    ],[res.data.countView.totalPresent
+                      ,res.data.countView.totalLate,res.data.countView.totalLeave],{},'pie','piechart');
                     
                     this.renderChart([
                       'Present',
                       'Leave',
                       'Late'
-                    ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'bar','lineChart');
+                    ],[res.data.countView.totalPresent
+                      ,res.data.countView.totalLate,res.data.countView.totalLeave],{},'bar','lineChart');
                   }
                  
                 }).catch((error)=>{

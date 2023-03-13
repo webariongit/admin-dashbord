@@ -476,10 +476,10 @@
                            </tbody>
                            <tbody *ngIf="dashboard_data?.attendanceDetail.length > 0" >
                              <tr *ngFor="let item of dashboard_data?.attendanceDetail | paginate: { itemsPerPage: 5, currentPage: page }">
-                                <th scope="row"><a href="#">{{item.refID}}</a></th>
-                                <td>{{item.name}}</td>
-                                <td><a href="#" class="text-primary">{{item.inTime}}</a></td>
-                                <td><a href="#" class="text-primary">{{item.outTime}}</a></td>
+                                <th scope="row"><a class="text-primary">{{item.refID}}</a></th>
+                                <td class="text-primary">{{item.name}}</td>
+                                <td><a  class="text-primary">{{item.inTime}}</a></td>
+                                <td><a  class="text-primary">{{item.outTime}}</a></td>
                                 <td><span class="badge {{item.status}}">{{item.status}}</span></td>
                              </tr>
                               <!-- 
@@ -619,7 +619,7 @@
                              <tr *ngFor="let leaveBal of dashboard_data?.userLeaveBalance | paginate: { itemsPerPage: 3, currentPage:  empPage,id: 'first' }">
                                 
                                 <td>{{leaveBal.leaveType}}</td>
-                                <td><a href="#" class="text-primary">{{leaveBal.balance}}</a></td>
+                                <td><a  class="text-primary">{{leaveBal.balance}}</a></td>
                                
                              </tr>
                              <!-- <tr>
@@ -666,9 +666,9 @@
                            </tbody>
                           <tbody *ngIf="dashboard_data?.attendanceDetail?.length >0">
                              <tr *ngFor="let attendance of dashboard_data?.attendanceDetail | paginate: { itemsPerPage: 5, currentPage:  empPage2 ,id: 'second'}">
-                                <td>{{attendance.punchDate}}</td>
-                                <td>{{attendance.inTime}}</td>
-                                <td><a href="#" class="text-primary">{{attendance.outTime}}</a></td>
+                                <td >{{attendance.punchDate}}</td>
+                                <td >{{attendance.inTime}}</td>
+                                <td><a  class="text-primary">{{attendance.outTime}}</a></td>
                                
                              </tr>
                              
