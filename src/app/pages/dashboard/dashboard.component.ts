@@ -309,16 +309,21 @@ export class DashboardComponent implements OnInit {
                 this.apiCallMethod.get(userApi).then((res: any)=>{
                   this.dashboard_data = res.data;
                   console.log(`this.dashboard_data==>`,this.dashboard_data);
-                  this.renderChart([
-                    'Present',
-                    'Leave',
-                    'Late'
-                  ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'pie','piechart');
-                  this.renderChart([
-                    'Present',
-                    'Leave',
-                    'Late'
-                  ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'bar','lineChart');
+                  if(this.user_role=='admin'){
+
+                    this.renderChart([
+                      'Present',
+                      'Leave',
+                      'Late'
+                    ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'pie','piechart');
+                    
+                    this.renderChart([
+                      'Present',
+                      'Leave',
+                      'Late'
+                    ],[res.data.countView.totalEmployee,res.data.countView.totalLate,res.data.countView.totalLeave],{},'bar','lineChart');
+                  }
+                 
                 }).catch((error)=>{
                   console.log(error)
                 })

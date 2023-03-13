@@ -26,7 +26,6 @@ export class PagesLoginComponent implements OnInit {
   {
    
 
-
     let username = window.btoa(form.value.username);
     let password = window.btoa(form.value.password);
     console.log(password,username)

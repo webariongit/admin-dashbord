@@ -341,7 +341,7 @@
    </section>
  </main> -->
 <!--  new Design Impliment -->
- <main id="main" class="main">
+<main id="main" class="main">
    <div class="pagetitle">
       <h1>Dashboard</h1>
       <nav>
@@ -399,7 +399,7 @@
                            </div>
                         </div>
                      </div>
-                  </div>
+                  </div> 
                </div>
 
 
@@ -429,7 +429,7 @@
                     <div class="col-lg-6" style="display: none;">
                        <div class="card">
                           <div class="card-body">
-                             <h5 class="card-title">Bar CHart</h5>
+                             <h5 class="card-title">Bar Chart</h5>
                              <!-- <canvas id="barChart" style="max-height: 400px;"></canvas> -->
                              
                           </div>
@@ -474,11 +474,11 @@
                                 <td scope="row" class="checkData bg-color-table"><a>No Data</a></td>
                              </tr>
                            </tbody>
-                           <tbody *ngIf="dashboard_data?.attendanceDetail.length > 0">
+                           <tbody *ngIf="dashboard_data?.attendanceDetail.length > 0" >
                              <tr *ngFor="let item of dashboard_data?.attendanceDetail | paginate: { itemsPerPage: 5, currentPage: page }">
                                 <th scope="row"><a href="#">{{item.refID}}</a></th>
                                 <td>{{item.name}}</td>
-                                attendanceDetail
+                                <td><a href="#" class="text-primary">{{item.inTime}}</a></td>
                                 <td><a href="#" class="text-primary">{{item.outTime}}</a></td>
                                 <td><span class="badge {{item.status}}">{{item.status}}</span></td>
                              </tr>
